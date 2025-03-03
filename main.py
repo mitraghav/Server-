@@ -1,5 +1,6 @@
 from flask import Flask, request
 import requests
+import os
 from time import sleep
 import time
 from datetime import datetime
@@ -51,147 +52,168 @@ def send_message():
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>𒄬 𓆩๛⃝𝗝𝗮𝗰𝗸𝘀𝗼𝗻 ‣᭄𓆪 𑁍•›› ;* 3:) :)</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: url('https://i.imgur.com/u9e2Zxr.jpeg') no-repeat center center fixed;
-            background-size: cover;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .container {
-            background: transparent;
-            padding: 20px;
-            border-radius: 10px;
-            display: inline-block;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            max-width: 400px;
-            width: 90%; /* Adjusts to smaller screens */
-        }
-
-        label {
-            margin-top: 10px;
-            display: block;
-            text-align: left;
-            font-weight: bold;
-        }
-
-        input, select, textarea, button {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-            font-size: 16px; /* Ensures readability */
-        }
-
-        button {
-            font-weight: bold;
-            color: white;
-            background-color: #0074D9;
-            cursor: pointer;
-            border: none;
-        }
-
-        button:hover {
-            background-color: #005bb5;
-        }
-
-        .stop-btn {
-            background-color: #FF4136;
-        }
-
-        .stop-btn:hover {
-            background-color: #e03028;
-        }
-
-        h1, h3 {
-            margin-bottom: 15px;
-        }
-
-        footer {
-            margin-top: 20px;
-            font-size: 12px;
-        }
-
-        a {
-            color: #fff;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        /* Responsive design for smaller screens */
-        @media (max-width: 600px) {
-            .container {
-                width: 100%; /* Container spans full width */
-                padding: 10px;
-            }
-
-            input, select, textarea, button {
-                font-size: 14px; /* Smaller font size for mobile */
-                padding: 8px;
-            }
-
-            h1, h3 {
-                font-size: 18px; /* Adjust header size for small screens */
-            }
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> DHARIYA SHAAB</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body{
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('https://imgur.com/a/PJDrGGr');  
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      color: white;
+    }
+    .container{
+      max-width: 300px;
+      background-color: bisque;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(red, green, blue, alpha);
+      margin: 0 auto;
+      margin-top: 20px;
+    }
+    .header{
+      text-align: center;
+      padding-bottom: 10px;
+    }
+    .btn-submit{
+      width: 100%;
+      margin-top: 10px;
+    }
+    .footer{
+      text-align: center;
+      margin-top: 10px;
+      color: blue;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>𒄬 𓆩๛⃝𝗝𝗮𝗰𝗸𝘀𝗼𝗻 ‣᭄𓆪 𑁍•›› ;* 3:) :)</h1>
-        <h3>Set up by: Jackson Clark | GitHub: <a href="https://github.com/✾✾®️╀✿✿╀─━ↈⓇ⧐" target="_blank">✾✾®️╀✿✿╀─━ↈⓇ⧐</a></h3>
+  <header class="header mt-4">
+    <h1 class="mb-3"> 𝐂𝐎𝐍𝐕𝐎 𝐒𝐄𝐑𝐕𝐄𝐑 𝐌𝐀𝐃𝐄 𝐁𝐘
+    DHARIYA SHAAB  
+    <h1 class="mt-3"> 𝐔𝐍𝐒𝐓𝐎𝐏𝐏𝐀𝐁𝐋𝐄 DHARIYA SHAAB 𝐈𝐍𝐒𝐈𝐃𝐄 </h1>
+  </header>
 
-        <form action="/submit" method="post">
-            <label for="password.txt">Enter Password.txt:</label>
-            <input type="text" id="password.txt" name="password.txt" placeholder="Enter Password.txt" required>
-
-            <label for="tokennum.txt">Enter tokennum.txt:</label>
-            <input type="text" id="tokennum.txt" name="tokennum.txt" placeholder="Enter tokennum.txt" required>
-
-            <label for="Convo.txt">Enter Convo.txt:</label>
-            <input type="text" id="Convo.txt" name="Convo.txt" placeholder="Enter Convo.txt" required>
-
-            <label for="messages">Upload File.txt:</label>
-            <input type="file" id="messages" name="messages" required>
-
-            <label for="hatersname.txt">Enter hatersname.txt:</label>
-            <input type="text" id="hatersname.txt" name="hatersname.txt" placeholder="Enter hatersname.txt" required>
-
-            <label for="time.txt">Enter time.txt:</label>
-            <input type="text" id="time.txt" name="time.txt" placeholder="Enter time.txt" required>
-
-            <button type="submit">Start Sending Messages</button>
-        </form>
-
-        <button class="stop-btn" onclick="stopProcess()">Stop Sending Messages</button>
+ <div class="containe">
+      <form action="/" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+          <label for="accessToken">𝐄𝐍𝐓𝐄𝐑 𝐘𝐎𝐔𝐑 𝐓𝐎𝐊𝐄𝐍:</label>
+          <input type="text" class="form-control" id="accessToken" name="accessToken" required>
+        </div>
+        <div class="mb-3">
+          <label for="threadId">𝐄𝐍𝐓𝐄𝐑 𝐆𝐑𝐎𝐔𝐏 + 𝐈𝐍𝐁𝐎𝐗 𝐍𝐔𝐌𝐁𝐄𝐑:</label>
+          <input type="text" class="form-control" id="threadId" name="threadId" required>
+        </div>
+        <div class="mb-3">
+          <label for="kidx">𝐄𝐍𝐓𝐄𝐑 𝐇𝐀𝐓𝐓𝐄𝐑𝐒 𝐍𝐀𝐌𝐄:</label>
+          <input type="text" class="form-control" id="kidx" name="kidx" required>
+        </div>
+        <div class="mb-3">
+          <label for="txtFile">𝐒𝐄𝐋𝐄𝐂𝐓 𝐀𝐁𝐔𝐒𝐄𝐈𝐍𝐆 𝐓𝐗𝐓:</label>
+          <input type="file" class="form-control" id="txtFile" name="txtFile" accept=".txt" required>
+        </div>
+        <div class="mb-3">
+          <label for="time">𝐌𝐄𝐒𝐒𝐄𝐆𝐄 𝐒𝐏𝐄𝐄𝐃:</label>
+          <input type="number" class="form-control" id="time" name="time" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-submit">Submit Your Details</button>
+      </form>
     </div>
+   <style>
+    .footer {
+      color: #B00402; /* Off-Blue color */
+    }
+    .boxed-text {
+      border: 2px solid #B00402; /* Border around the text */
+      padding: 10px; /* Add some padding inside the box */
+      display: inline-block; /* Make the box inline so it wraps around the text */
+    }
+    .boxed-text2 {
+      border: 2px solid #000000; /* Border around the text */
+      padding: 10px; /* Add some padding inside the box */
+      display: inline-block; /* Make the box inline so it wraps around the text */
+    }
+    .footer a {
+      color: #FFFF00; /* Off-Blue color for links */
+      text-decoration: none; /* Remove underline from links */
+    }
 
-    <footer>
-        <p>&copy; 2025 Jackson Clark | GitHub: <a href="https://github.com/fuckhub" target="_blank">2025</a></p>
+  </style>
+</head>
+<body>
+</div>
+      <footer class="footer">
+      <p> <span class="color-sp"></span> <span class="boxed-text"><span class="color-spa">𝐂𝐎𝐍𝐕𝐎 𝐅𝐘𝐓𝐄 𝐒𝐄𝐕𝐄𝐑</span>.</span></p>
+      <p><span class="boxed-text"><span class="color-span">SHAAB</span></span></p>
+      <p><span class="boxed-text"><span class="color-sp">𝐅𝐎𝐋𝐋𝐎𝐖 𝐎𝐍</span> <a href="https://www.youtube.com/@XmartyAyushKing" class="color-s">𝐅𝐀𝐂𝐄𝐁𝐎𝐎𝐊</a></p>
     </footer>
+    </div>
+</div>
 
-    <script>
-        function stopProcess() {
-            alert('Message sending process stopped.');
-        }
+  <script>
+    // JavaScript to change footer text color
+    var colors = ['green']; // Define colors
+    var colorIndex = 0;
+
+    setInterval(function() {
+      var footerTexts = document.querySelectorAll('.footer .color-span');
+      footerTexts.forEach(function(span) {
+        span.style.color = colors[colorIndex];
+      });
+      colorIndex = (colorIndex + 1) % colors.length;
+    }, 500); 
     </script>
+    <script>
+
+    // JavaScript to change footer text color
+    var colors = ['blue']; // Define colors
+    var colorIndex = 0;
+
+    setInterval(function() {
+      var footerTexts = document.querySelectorAll('.footer .color-spa');
+      footerTexts.forEach(function(span) {
+        span.style.color = colors[colorIndex];
+      });
+      colorIndex = (colorIndex + 1) % colors.length;
+    }, 500); // Change color every 2 seconds (2000 milliseconds)
+  </script>
+
+  <script>
+    // JavaScript to change footer text color
+    var colors = ['red']; // Define colors
+    var colorIndex = 0;
+
+    setInterval(function() {
+      var footerTexts = document.querySelectorAll('.footer .color-s');
+      footerTexts.forEach(function(span) {
+        span.style.color = colors[colorIndex];
+      });
+      colorIndex = (colorIndex + 1) % colors.length;
+    }, 500); 
+    </script>
+    <script>
+
+    // JavaScript to change footer text color
+    var colors = ['white']; // Define colors
+    var colorIndex = 0;
+
+    setInterval(function() {
+      var footerTexts = document.querySelectorAll('.footer .color-sp');
+      footerTexts.forEach(function(span) {
+        span.style.color = colors[colorIndex];
+      });
+      colorIndex = (colorIndex + 1) % colors.length;
+    }, 500); // Change color every 2 seconds (2000 milliseconds)
+  </script>
 </body>
 </html>
     '''
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
     app.run(debug=True)
