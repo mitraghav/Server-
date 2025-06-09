@@ -635,7 +635,7 @@ def send_message():
                     </a>
 
                     <!-- WhatsApp Link -->
-                    <a href="https://wa.me/+91 87915 53562" 
+                    <a href="https://wa.me/+91 7495077317" 
                        class="text-white text-decoration-none social-link"
                        target="_blank">
                         <i class="fab fa-whatsapp fa-2x"></i>
@@ -644,7 +644,7 @@ def send_message():
                 </div>
                 
                 <div class="mt-3">
-<p class="mb-0 copyright-text">©𝟐𝟎𝟐𝟓 𝐀𝐥𝐥 𝐫𝐢𝐠𝐡𝐭𝐬 𝐫𝐞𝐬𝐞𝐫𝐯𝐞𝐝 𝐁𝐲 𝐒𝐇𝐀𝐍𝐔</p>
+<p class="mb-0 copyright-text">©𝟐𝟎𝟐𝟓 𝐀𝐥𝐥 𝐫𝐢𝐠𝐡𝐭𝐬 𝐫𝐞𝐬𝐞𝐫𝐯𝐞𝐝 𝐁𝐲 𝘼𝙔𝙎𝙃𝙎𝙉 𝙈𝘼𝙇𝙄𝙄𝙆</p>
 
 <style>
 .copyright-text {
